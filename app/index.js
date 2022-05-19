@@ -1,6 +1,7 @@
 import express from 'express';
 import hpp from 'hpp';
 import helmet from 'helmet';
+import cors from 'cors';
 import compression from 'compression';
 import favicon from 'serve-favicon';
 import runHttpServer from './server';
@@ -8,10 +9,12 @@ import { httpLogger } from './middleware';
 import { env, paths } from '../utils';
 
 const app = express();
+app.use(cors());
 
 // could add more middleware here where applicable
 app.use(httpLogger());
-app.use(helmet({ contentSecurityPolicy: false }));
+// app.use(helmet({ contentSecurityPolicy: false }));
+app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
 app.use(hpp());
 app.use(compression());
 

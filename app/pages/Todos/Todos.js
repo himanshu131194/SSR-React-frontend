@@ -3,13 +3,15 @@ import { Page, Loader } from '../../components';
 import TodoList from './TodoList';
 
 export default function Todos() {
-  const { data: todos, frontloadMeta } = useFrontload(
-    'todos',
-    async ({ api }) => {
-      const { data } = await api.fetchTodos();
-      return data;
-    }
-  );
+  const {
+    data: todos,
+    frontloadMeta,
+    setData
+  } = useFrontload('todos', async ({ api }) => {
+    const { data } = await api.fetchTodos();
+    setData(data => ({ ...data }));
+    return data;
+  });
 
   if (frontloadMeta.pending) {
     return <Loader />;

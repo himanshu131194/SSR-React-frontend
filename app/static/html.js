@@ -15,7 +15,9 @@ export default function html({
       ${styles}
     </head>
     <body>
-      <div id="root">${rendered}</div>
+      <div class="d-flex align-items-center min-h-100" id="root">
+      ${rendered}
+      </div>
       <script>window.__UNIVERSSR_FRONTLOAD_DATA__ = ${frontloadData}</script>
       ${scripts}
     </body>

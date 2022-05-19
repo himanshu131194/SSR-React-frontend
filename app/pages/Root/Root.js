@@ -9,9 +9,9 @@ import styles from './Root.module';
 
 export function Root({ route }) {
   return (
-    <div className={styles.container}>
+    <>
       <Helmet {...helmet} />
-      <header>
+      {/* <header>
         <nav className={styles.menu}>
           <ul>
             {routes.map(
@@ -30,11 +30,11 @@ export function Root({ route }) {
             )}
           </ul>
         </nav>
-      </header>
-      <div className={styles.content}>
+      </header> */}
+      <>
         <ErrorBoundary>{renderRoutes(route.routes)}</ErrorBoundary>
-      </div>
-    </div>
+      </>
+    </>
   );
 }
 
